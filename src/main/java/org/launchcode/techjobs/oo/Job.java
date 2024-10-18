@@ -37,14 +37,31 @@ public class Job {
 
     @Override
     public String toString() {
-        return "System.lineSeparator()\n" +
+
+        if (name.isEmpty()){
+            name = "Data not available";
+        }
+        if (employer.getValue().isBlank()) {
+            employer.setValue("Data not available");
+        }
+        if (location.getValue().isBlank()){
+            location.setValue("Data not available");
+        }
+        if (positionType.getValue().isBlank()){
+            positionType.setValue("Data not available");
+        }
+        if (coreCompetency.getValue().isBlank()){
+            coreCompetency.setValue("Data not available");
+        }
+
+        return System.lineSeparator() +
                 "ID: " + id + "\n" +
                 "Name: " + name + "\n" +
                 "Employer: " + employer + "\n" +
                 "Location: " + location + "\n" +
                 "Position Type: " + positionType + "\n" +
-                "Core Competency: " + coreCompetency + "\n" +
-                "System.lineSeparator()";
+                "Core Competency: " + coreCompetency +
+                System.lineSeparator();
     }
 
     @Override
