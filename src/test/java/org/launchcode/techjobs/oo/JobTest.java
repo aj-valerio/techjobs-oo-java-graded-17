@@ -45,6 +45,7 @@ public class JobTest {
         assertEquals(testJob3.getCoreCompetency().toString(), "Persistence");
     }
 
+    @Test
     public void testJobsForEquality() {
         Job testJob1 = new Job("Product tester", new Employer("ACME"),
                 new Location("Desert"), new PositionType("Quality control"),
@@ -54,5 +55,30 @@ public class JobTest {
                 new CoreCompetency("Persistence"));
 
         assertFalse(testJob1.equals(testJob2));
+    }
+
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job testJob = new Job("Product tester", new Employer("ACME"),
+                new Location("Desert"), new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+        assertTrue(testJob.toString().startsWith(System.lineSeparator()));
+        assertTrue(testJob.toString().endsWith(System.lineSeparator()));
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+        Job testJob = new Job("Product tester", new Employer("ACME"),
+                new Location("Desert"), new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+        assertEquals(testJob.toString(), lineSeparator() +
+                "ID: 3\n" +
+                "Name: Product tester\n" +
+                "Employer: ACME\n" +
+                "Location: Desert\n" +
+                "Position Type: Quality control\n" +
+                "Core Competency: Persistence" +
+                lineSeparator());
+
     }
 }
